@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_ui_clone/widgets/ChatTabs.dart';
 
 void main() => runApp(const MyApp());
 
@@ -31,13 +32,17 @@ class MyTabController extends StatelessWidget {
         final TabController tabController = DefaultTabController.of(context)!;
         tabController.addListener(() {
           if (!tabController.indexIsChanging) {
-            // Your code goes here.
             // To get index of current tab use tabController.index
+            // ignore: avoid_print
+            print('Current tab is ${tabController.index}');
           }
         });
         return Scaffold(
           appBar: AppBar(
-            title: const Text('WhatsApp'),
+            title: const Text(
+              'WhatsApp',
+              textDirection: TextDirection.ltr,
+            ),
             backgroundColor: Colors.teal,
             actions: <Widget>[
               IconButton(
@@ -71,7 +76,12 @@ class MyTabController extends StatelessWidget {
               indicatorColor: Colors.white,
             ),
           ),
-          body: const Text("hi"),
+          body: const ChatsTab(),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {},
+            child: const Icon(Icons.message),
+            backgroundColor: Colors.teal,
+          ),
         );
       }),
     );
